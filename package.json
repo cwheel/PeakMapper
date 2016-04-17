@@ -17,7 +17,8 @@
   "homepage": "https://github.com/cwheel/PeakMapper#readme",
   "dependencies": {
     "casperjs": "latest",
-    "phantomjs": "latest",
+    "phantom": "latest",
+    "q": "latest",
     "spooky": "latest",
     "striptags": "latest"
   }
