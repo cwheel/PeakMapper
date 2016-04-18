@@ -16,15 +16,10 @@
   },
   "homepage": "https://github.com/cwheel/PeakMapper#readme",
   "dependencies": {
-    "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
-    "casperjs": "latest",
     "gulp": "^3.9.1",
     "phantomjs": "latest",
     "react": "^15.0.1",
     "spooky": "latest",
-    "striptags": "latest",
-    "vinyl-source-stream": "^1.1.0",
     "phantom": "latest",
     "q": "latest",
     "spooky": "latest",
@@ -32,5 +27,14 @@
     "moment": "latest",
     "express": "latest",
     "body-parser": "latest"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "gulp-livereload": "latest",
+    "gulp-htmlmin": "latest",
+    "gulp-develop-server": "latest"
   }
 }
