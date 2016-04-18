@@ -2,12 +2,14 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Motion, spring} from 'react-motion';
 
+import { ReportComponent } from './sidebar/reportComponent'
+
 class SidebarComponent extends React.Component {
 	constructor() {
 		super();
 		
 		this.state = {
-			visible: true
+			visible: false
 		};
 
 		this.disclose = this.disclose.bind(this);
@@ -23,7 +25,20 @@ class SidebarComponent extends React.Component {
 			cursor: 'pointer'
 		};
 
-		const slide = 210;
+		const sidebarContentStyle = {
+			marginTop: '45px',
+			marginLeft: '15px',
+			marginRight: '36px'
+		};
+
+		const sidebarTitleStyle = {
+			fontSize: '25px',
+			fontWeight: 100,
+			marginLeft: '15px',
+			marginTop: '3px'
+		};
+
+		const slide = 260;
 
 		return (
 			<div>
@@ -31,7 +46,11 @@ class SidebarComponent extends React.Component {
 					{({x, alpha}) => 
 						<div className="sidebar" style={{transform: `translate3d(${x}px, 0, 0)`, background: `rgba(255,255,255,${alpha})`, boxShadow: `6px 0px 77px -25px rgba(0,0,0,${alpha})`}}>
 							<i className="fa fa-bars" aria-hidden="true" style={barStyle} onClick={this.disclose}></i>
-							hello world
+
+							<div style={sidebarTitleStyle}>Peak Report</div>
+							<div style={sidebarContentStyle}>
+								<ReportComponent></ReportComponent>
+							</div>
 						</div>
 					}
 				</Motion>
