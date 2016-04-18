@@ -4,5 +4,5 @@ import MapComponent from './components/mapComponent';
 
 ReactDOM.render(
     <MapComponent></MapComponent>,
-    document.getElementById('mapComponent')
+    document.getElementById('app')
 );
