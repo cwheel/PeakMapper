@@ -21,6 +21,8 @@
     "q": "latest",
     "spooky": "latest",
     "mongoose": "latest",
-    "moment": "latest"
+    "moment": "latest",
+    "express": "latest",
+    "body-parser": "latest"
   }
 }
