@@ -1,22 +1,21 @@
-var Spooky = require('spooky');
+var mongoose = require('mongoose');
+var moment = require('moment');
+var express = require('express');
+var bodyParser = require('body-parser');
 
-var spooky = new Spooky({child: {
-            transport: 'stdio',
-            "ignore-ssl-errors": true,
-            "ssl-protocol": 'tlsv1'
+var trailConditions = require('./trailConditions');
+var router = require('./router');
 
-        }}, function (err) {
-        	spooky.start('http://www.newenglandtrailconditions.com/nh/');
+var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-        	spooky.then(function () {
-        		this.emit('hello', 'Hello, from ' + this.evaluate(function () {
-        			return document.title;
-        		}));
-        	});
+router(app);
 
-        	spooky.run();
-       	});
+mongoose.connect('mongodb://localhost/peakMapper');
 
-spooky.on('hello', function (greeting) {
-    console.log(greeting);
-});
+/*trailConditions.reportsFor('Osceola').then((res) => {
+	console.log(res);
+});*/
+//trailConditions.reportsFrom(moment().startOf('day').subtract(1, 'days').toDate());
+//trailConditions.populateDatabase(trailConditions.states.NewHampshire, 50, 100);

@@ -24,6 +24,13 @@
     "react": "^15.0.1",
     "spooky": "latest",
     "striptags": "latest",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "phantom": "latest",
+    "q": "latest",
+    "spooky": "latest",
+    "mongoose": "latest",
+    "moment": "latest",
+    "express": "latest",
+    "body-parser": "latest"
   }
 }
