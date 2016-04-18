@@ -6,17 +6,23 @@ class MapView extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			lat: 51.505,
-			lng: -0.09,
+			lat: 44.161,
+			lng: -71.4352,
 			zoom: 12
 		};
+
 	}
 
 	render() {
 		const position = [this.state.lat, this.state.lng];
+		var mapStyle = {
+			width: '100%',
+			height: '100%'
+		};
+		
 		return (
-			<Map center={position} zoom={this.state.zoom}>
-				<TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+			<Map center={position} zoom={this.state.zoom} style={mapStyle}>
+				<TileLayer style={mapStyle} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
 				<Marker position={position}>
 					<Popup>
 						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>

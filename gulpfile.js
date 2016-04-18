@@ -30,7 +30,7 @@ gulp.task('watch', function () {
 	livereload.listen();
 
     gulp.watch('client/**/*.jsx', ['buildReact']);
-    gulp.watch('*.html', ['buildHTML']);
+    gulp.watch('client/*.html', ['buildHTML']);
     gulp.watch(['*.js' ], server.restart);
 });
 
