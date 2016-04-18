@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Motion, spring} from 'react-motion';
 
-import { ReportComponent } from './sidebar/reportComponent'
+import ReportComponent from './sidebar/reportComponent'
 
 class SidebarComponent extends React.Component {
 	constructor() {
