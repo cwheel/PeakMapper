@@ -159,17 +159,16 @@ module.exports = {
 			def.resolve(reports);
 		});
 
-		return reports;
+		return def.promise;
 	},
 	reportsFor: (peak) => {
 		var re = new RegExp(peak, "g");
-
 		var def = q.defer();
 
 		trailReport.find({peaks: re}, function(err, reports) {
 			def.resolve(reports);
 		});
 
-		return reports;
+		return def.promise;
 	}
 }
