@@ -22,6 +22,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-leaflet": "^0.11.1",
+    "react-motion": "latest",
     "webpack": "^1.13.0"
   },
   "devDependencies": {

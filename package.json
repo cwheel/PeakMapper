@@ -16,17 +16,16 @@
   },
   "homepage": "https://github.com/cwheel/PeakMapper#readme",
   "dependencies": {
-    "gulp": "^3.9.1",
-    "phantomjs": "latest",
-    "react": "^15.0.1",
-    "spooky": "latest",
-    "phantom": "latest",
-    "q": "latest",
-    "spooky": "latest",
-    "mongoose": "latest",
-    "moment": "latest",
+    "body-parser": "latest",
     "express": "latest",
-    "body-parser": "latest"
+    "gulp": "^3.9.1",
+    "moment": "latest",
+    "mongoose": "latest",
+    "phantom": "latest",
+    "phantomjs": "latest",
+    "q": "latest",
+    "react": "^15.0.1",
+    "spooky": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
