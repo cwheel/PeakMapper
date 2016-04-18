@@ -1,5 +1,10 @@
-var trailConditions = require('./trailConditions'); 
+var mongoose = require('mongoose');
+var moment = require('moment');
 
-trailConditions.getReport(trailConditions.states.NewHampshire, 25531).then((result) => {
-	console.log(result);
-});
+var trailConditions = require('./trailConditions');
+
+mongoose.connect('mongodb://localhost/peakMapper');
+
+trailConditions.reportsUntil(moment().startOf('day').subtract(1, 'days').toDate());
+
+//trailConditions.populateDatabase(trailConditions.states.NewHampshire, 50, 100);

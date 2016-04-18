@@ -20,6 +20,7 @@
     "phantom": "latest",
     "q": "latest",
     "spooky": "latest",
-    "striptags": "latest"
+    "mongoose": "latest",
+    "moment": "latest"
   }
 }

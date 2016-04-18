@@ -1,5 +1,8 @@
 var phantom = require('phantom');
 var q = require('q');
+var moment = require('moment');
+
+var trailReport = require('./models/trailReport'); 
 
 module.exports = {
 	states: {
@@ -9,7 +12,7 @@ module.exports = {
 		RhodeIslandConnecticut: 'ri-ct',
 		Vermont: 'vt'
 	},
-	getReport: function(state, id) {
+	getReport: (state, id) => {
 		var page = null;
 		var instance = null;
 		var def = q.defer();
@@ -50,6 +53,8 @@ module.exports = {
 
 					return report;
 				}).then(function(result) {
+					result.reportID = id;
+					result.date = moment(result.date).toDate();
 					def.resolve(result);
 
 					page.close();
@@ -63,7 +68,7 @@ module.exports = {
 
 		return def.promise;
 	},
-	getReports: function(state, from,to) {
+	getReports: (state, from,to) => {
 		var page = null;
 		var instance = null;
 		var def = q.defer();
@@ -121,5 +126,50 @@ module.exports = {
 		});
 
 		return def.promise;
+	},
+	populateDatabase: (state, from, to) => {
+		this.getReports(state, from, to).then((reports) => {
+			for (var i = 0; i < reports.length; i++) {
+				var id = reports[i].id;
+
+				this.getReport(state, id).then((report) => {
+					if (report.peaks == '') {
+						console.log("[Error] Retrying " + report.reportID);
+
+						this.getReport(state, id).then((report) => {
+							var saveReport = new trailReport(report);
+							saveReport.save();
+
+							console.log("Saved report " + report.reportID + ": " + report.peaks);
+						});
+					} else {
+						var saveReport = new trailReport(report);
+						saveReport.save();
+
+						console.log("Saved report " + report.reportID + ": " + report.peaks);
+					}
+				});
+			}
+		});
+	},
+	reportsFrom: (from) => {
+		var def = q.defer();
+
+		trailReport.find({date: {$gte: from}}, function(err, reports) {
+			def.resolve(reports);
+		});
+
+		return reports;
+	},
+	reportsFor: (peak) => {
+		var re = new RegExp(peak, "g");
+
+		var def = q.defer();
+
+		trailReport.find({peaks: re}, function(err, reports) {
+			def.resolve(reports);
+		});
+
+		return reports;
 	}
 }
