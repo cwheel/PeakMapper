@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MapView from './components/map-view';
+import MapComponent from './components/mapComponent';
 
 ReactDOM.render(
-    <MapView />,
-    document.getElementById('mapView')
+    <MapComponent></MapComponent>,
+    document.getElementById('mapComponent')
 );

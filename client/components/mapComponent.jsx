@@ -1,27 +1,32 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 
-class MapView extends React.Component {
+import SidebarComponent from './sidebarComponent';
+
+class MapComponent extends React.Component {
 	constructor() {
 		super();
+		
 		this.state = {
 			lat: 44.161,
 			lng: -71.4352,
-			zoom: 12
+			zoom: 13
 		};
-
 	}
 
 	render() {
 		const position = [this.state.lat, this.state.lng];
-		var mapStyle = {
+		const mapStyle = {
 			width: '100%',
 			height: '100%'
 		};
 		
 		return (
-			<Map center={position} zoom={this.state.zoom} style={mapStyle}>
+			<Map center={position} zoom={this.state.zoom} zoomControl={false} style={mapStyle}>
+				<ZoomControl position='topright'></ZoomControl>
+				<SidebarComponent></SidebarComponent>
+
 				<TileLayer style={mapStyle} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
 				<Marker position={position}>
 					<Popup>
@@ -33,4 +38,4 @@ class MapView extends React.Component {
 	}
 }
 
-export default MapView;
+export default MapComponent;
