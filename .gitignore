@@ -11,6 +11,8 @@ node_modules
 # misc
 /client/.sass-cache
 /client/connect.lock
+/client/node_modules
+/client/dist
 /client/coverage/*
 /client/libpeerconnection.log
 npm-debug.log
