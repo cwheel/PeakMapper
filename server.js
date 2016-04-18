@@ -1,11 +1,11 @@
 var phantom = require('phantom');
 var q = require('q');
 
-getEntries(0,50).then((result) => {
+getReport('nh', 25531).then((result) => {
 	console.log(result);
 });
 
-function getEntries(from,to) {
+function getReport(state, id) {
 	var page = null;
 	var instance = null;
 	var def = q.defer();
@@ -16,7 +16,62 @@ function getEntries(from,to) {
 	})
 	.then(_page => {
 		page = _page;
-		return _page.open('http://www.newenglandtrailconditions.com/nh/index.php?limit1=' + from + '&limit2=' + to);
+		return _page.open('http://www.newenglandtrailconditions.com/' + state + '/viewreport.php?entryid=' + id);
+	})
+	.then(status => {
+		page.includeJs('https://code.jquery.com/jquery-2.2.3.min.js').then(function() {
+			page.evaluate(function() {
+				var report = {}
+				var reportItems = {peaks: 'Peaks',
+				 					trails: 'Trails:',
+				  					date: 'Date of Hike:', 
+				  					parking: 'Parking/Access Road Notes:',
+				  					surface: 'Surface Conditions:',
+				 					equipment: 'Recommended Equipment:',
+				 					waterCrossing: 'Water Crossing Notes:',
+				 					maintenance: 'Trail Maintenance Notes:',
+				 					dog: 'Dog-Related Notes:',
+				 					bugs: 'Bugs:',
+				 					lostFound: 'Lost and Found:',
+				 					comments: 'Comments:',
+				 					poster: 'Name:',
+				 					posterEmail: 'E-Mail:',
+				 					submitted: 'Date Submitted:',
+				 					link: 'Link:'};
+
+				for (key in reportItems) {
+					var row = $('tr:contains("' + reportItems[key] + '")');
+					report[key] = $($(row[row.length - 1]).children()[2]).text().trim();
+				}
+
+				return report;
+			}).then(function(result) {
+				def.resolve(result);
+
+				page.close();
+				instance.exit();
+			});
+		});
+	})
+	.catch(error => {
+	    instance.exit();
+	});
+
+	return def.promise;
+}
+
+function getReports(state, from,to) {
+	var page = null;
+	var instance = null;
+	var def = q.defer();
+
+	phantom.create(['--load-images=no']).then(_instance => {
+		instance = _instance;
+	    return instance.createPage();
+	})
+	.then(_page => {
+		page = _page;
+		return _page.open('http://www.newenglandtrailconditions.com/' + state + '/index.php?limit1=' + from + '&limit2=' + to);
 	})
 	.then(status => {
 		page.includeJs('https://code.jquery.com/jquery-2.2.3.min.js').then(function() {
@@ -56,8 +111,6 @@ function getEntries(from,to) {
 				page.close();
 				instance.exit();
 			});
-
-			
 		});
 	})
 	.catch(error => {
