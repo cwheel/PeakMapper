@@ -13,8 +13,6 @@ class SidebarComponent extends React.Component {
 		this.disclose = this.disclose.bind(this);
 	}
 
-	
-
 	render() {
 		const barStyle = {
 			position: 'absolute',
@@ -40,7 +38,6 @@ class SidebarComponent extends React.Component {
 			</div>
 		);
 	}
-
 
 	disclose() {
 		this.setState({visible: !this.state.visible});
