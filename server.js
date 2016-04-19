@@ -22,4 +22,4 @@ app.listen(3000);
 	console.log(res);
 });*/
 //trailConditions.reportsFrom(moment().startOf('day').subtract(1, 'days').toDate());
-//trailConditions.populateDatabase(trailConditions.states.NewHampshire, 50, 100);
+//trailConditions.populateDatabase(trailConditions.states.NewHampshire, 0, 50);
