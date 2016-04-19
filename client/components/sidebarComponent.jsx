@@ -52,13 +52,13 @@ class SidebarComponent extends React.Component {
 			boxShadow: '6px 0px 77px -25px rgba(0,0,0,0.75)'
 		};
 
-		const slide = 260;
+		const slide = 250;
 
 		return (
 			<div>
 				<Motion style={{x: spring(this.state.visible ? 0 : -slide), alpha: spring(this.state.visible ? 1 : 0)}}>
 					{({x, alpha}) => 
-						<div style={[sidebarStyle, {transform: `translate3d(${x}px, 0, 0)`, background: `rgba(255,255,255,${alpha})`, boxShadow: `6px 0px 77px -25px rgba(0,0,0,${alpha})`}]}>
+						<div style={[sidebarStyle, {transform: `translate(${x}px, 0)`, background: `rgba(255,255,255,${alpha})`, boxShadow: `6px 0px 77px -25px rgba(0,0,0,${alpha})`}]}>
 							<i className="fa fa-bars" aria-hidden="true" style={barStyle} onClick={this.disclose}></i>
 
 							<div style={sidebarTitleStyle}>Peak Report</div>
