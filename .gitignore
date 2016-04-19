@@ -16,3 +16,4 @@ node_modules
 /client/libpeerconnection.log
 npm-debug.log
 testem.log
+config.json

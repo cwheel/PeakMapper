@@ -25,6 +25,7 @@
     "phantomjs": "latest",
     "q": "latest",
     "react": "^15.0.1",
+    "request": "^2.72.0",
     "spooky": "latest"
   },
   "devDependencies": {
