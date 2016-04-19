@@ -23,17 +23,21 @@ class MapComponent extends React.Component {
 		};
 		
 		return (
-			<Map center={position} zoom={this.state.zoom} zoomControl={false} style={mapStyle}>
-				<ZoomControl position='topright'></ZoomControl>
+			<div style={mapStyle}>
 				<SidebarComponent></SidebarComponent>
+				
+				<Map center={position} zoom={this.state.zoom} zoomControl={false} style={mapStyle}>
+					<ZoomControl position='topright'></ZoomControl>
+					
 
-				<TileLayer style={mapStyle} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
-				<Marker position={position}>
-					<Popup>
-						<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
-					</Popup>
-				</Marker>
-			</Map>
+					<TileLayer style={mapStyle} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+					<Marker position={position}>
+						<Popup>
+							<span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+						</Popup>
+					</Marker>
+				</Map>
+			</div>
 		);
 	}
 }

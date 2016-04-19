@@ -28,7 +28,11 @@ class SidebarComponent extends React.Component {
 		const sidebarContentStyle = {
 			marginTop: '45px',
 			marginLeft: '15px',
-			marginRight: '36px'
+			marginRight: '36px',
+			position: 'absolute',
+			bottom: '0px',
+			top: '45px',
+			overflow: 'scroll'
 		};
 
 		const sidebarTitleStyle = {
@@ -44,7 +48,7 @@ class SidebarComponent extends React.Component {
 			<div>
 				<Motion style={{x: spring(this.state.visible ? 0 : -slide), alpha: spring(this.state.visible ? 1 : 0)}}>
 					{({x, alpha}) => 
-						<div className="sidebar" style={{transform: `translate3d(${x}px, 0, 0)`, background: `rgba(255,255,255,${alpha})`, boxShadow: `6px 0px 77px -25px rgba(0,0,0,${alpha})`}}>
+						<div className="sidebar" style={{transform: `translate3d(${x}px, 0, 0)`, background: `rgba(255,255,255,${alpha})`, boxShadow: `6px 0px 77px -25px rgba(0,0,0,${alpha})`, color: `rgba(0,0,0,${alpha})`}}>
 							<i className="fa fa-bars" aria-hidden="true" style={barStyle} onClick={this.disclose}></i>
 
 							<div style={sidebarTitleStyle}>Peak Report</div>
