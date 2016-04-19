@@ -133,13 +133,13 @@ class ReportComponent extends React.Component {
 					</div>
 				</div>
 				<hr/>
-				<div className="row">
+				<div className="row" style={{marginBottom: '20px'}}>
 					<div className="col-md-1">
 						<i className="fa fa-envelope" aria-hidden="true"></i>
 					</div>
 
 					<div className="col-md-10">
-						mkm@mkmarinac.com
+						<a href='mailto:mkm@mkmarinac.com'>mkm@mkmarinac.com</a>
 					</div>
 				</div>
 			</div>
